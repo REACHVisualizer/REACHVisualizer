@@ -1,50 +1,53 @@
 import { Injectable, HttpException } from '@nestjs/common';
-import { CHEMICALS } from './chemicals.mock';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { IChemical } from './interfaces/chemical.interface';
+import { ChemicalDto } from './chemical.dto';
+
+const chemicalProjection = {
+    __v: false,
+    _id: false,
+}
 
 @Injectable()
 export class ChemicalService {
-    private chemicals = CHEMICALS;
 
-    public getChemicals() {
-        return this.chemicals;
+    constructor (@InjectModel('Chemical') private readonly chemicalModel: Model<IChemical>) {}
+
+    public async getChemicals(): Promise<ChemicalDto[]> {
+        const chemicals = await this.chemicalModel.find({}, chemicalProjection).exec();
+        if (!chemicals || !chemicals[0]) {
+            throw new HttpException('Not Found', 404);
+        }
+        return chemicals;
     }
 
-    public postChemical(chemical) {
-        return this.chemicals.push(chemical);
+    public async postChemical(newChemical: ChemicalDto) {
+        const chemical = await new this.chemicalModel(newChemical);
+        return chemical.save();
     }
 
-    public getChemicalById(id: number): Promise<any> {
-        const chemicalId = Number(id);
-        return new Promise((resolve) => {
-            const chemical = this.chemicals.find(chemical => chemical.id === chemicalId);
-            if (!chemical) {
-                throw new HttpException('Not Found', 404);
-            }
-            return resolve(chemical);
-        });
+    public async getChemicalById(id: number): Promise<ChemicalDto> {
+        const chemical = await this.chemicalModel.findOne({ id }, chemicalProjection).exec();
+        if (!chemical){
+            throw new HttpException('Not Found', 404);
+        }
+        return chemical;
     }
 
-    public deleteChemicalById(id: number): Promise<any> {
-        const chemicalId = Number(id);
-        return new Promise((resolve) => {
-            const index = this.chemicals.findIndex(chemical => chemical.id === chemicalId);
-            if (index === -1) {
-                throw new HttpException('Not Found', 404);
-            }
-            this.chemicals.splice(index, 1);
-            return resolve(this.chemicals);
-        });       
+    public async deleteChemicalById(id: number): Promise<ChemicalDto> {
+        const chemical = await this.chemicalModel.findOneAndDelete({ id }).exec();
+        if (!chemical) {
+            throw new HttpException('Not Found', 404);
+        }
+        return chemical;   
     }
 
-    public putChemicalById(id: number, propertyName: string, propertyValue: string): Promise<any> {
-        const chemicalId = Number(id);
-        return new Promise((resolve) => {
-            const index = this.chemicals.findIndex(chemical => chemical.id === chemicalId);
-            if (index === -1) {
-                throw new HttpException('Not Found', 404);
-            }
-            this.chemicals[index][propertyName] = propertyValue;
-            return resolve(this.chemicals);
-        });
+    public async putChemicalById(id: number, propertyName: string, propertyValue: string): Promise<ChemicalDto> {
+        const chemical = await this.chemicalModel.findOneAndUpdate({ id },{[propertyName]: propertyValue},).exec();
+        if (!chemical){
+            throw new HttpException('Not Found', 404);
+        }
+        return chemical;
     }
 }
