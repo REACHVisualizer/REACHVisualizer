@@ -56,10 +56,9 @@ function createData(name, calories, fat, carbs, protein, price) {
           <TableCell component="th" scope="row">
             {row.name}
           </TableCell>
-          <TableCell align="right">{row.calories}</TableCell>
-          <TableCell align="right">{row.fat}</TableCell>
+          <TableCell align="center">{row.calories}</TableCell>
+          <TableCell align="center">{row.fat}</TableCell>
           <TableCell align="right">{row.carbs}</TableCell>
-          <TableCell align="right">{row.protein}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -102,9 +101,9 @@ function createData(name, calories, fat, carbs, protein, price) {
 
 Row.propTypes = {
     row: PropTypes.shape({
-        calories: PropTypes.number.isRequired,
-        carbs: PropTypes.number.isRequired,
-        fat: PropTypes.number.isRequired,
+        calories: PropTypes.string.isRequired,
+        carbs: PropTypes.string.isRequired,
+        fat: PropTypes.string.isRequired,
         history: PropTypes.arrayOf(
         PropTypes.shape({
             amount: PropTypes.number.isRequired,
@@ -113,29 +112,30 @@ Row.propTypes = {
         }),
         ).isRequired,
         name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        protein: PropTypes.number.isRequired,
+        price: PropTypes.string.isRequired,
+        protein: PropTypes.string.isRequired,
     }).isRequired,
 };
 
 const rows = [
-     //createData('Formaldehyde', 200-001-8, 50-00-0, 'Data Generation'),
-    // createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-    // createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-    // createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-    // createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
+     createData('Formaldehyde', '200-001-8', '50-00-0', 'Data Generation'),
+     createData('Formaldehyde', '200-001-8', '50-00-0', 'Data Generation'),
+     createData('Formaldehyde', '200-001-8', '50-00-0', 'Data Generation'),
+     createData('Formaldehyde', '200-001-8', '50-00-0', 'Data Generation'),
+     createData('Formaldehyde', '200-001-8', '50-00-0', 'Data Generation'),
+     createData('Formaldehyde', '200-001-8', '50-00-0', 'Data Generation'),
   ];
 
 function ChemicalTable(){
     return(
-        <TableContainer component={Paper}>
+        <TableContainer>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Substance Name</TableCell>
-            <TableCell align="right">EC Number</TableCell>
-            <TableCell align="right">CAS Number</TableCell>
+            <TableCell align="left">Substance Name</TableCell>
+            <TableCell align="center">EC Number</TableCell>
+            <TableCell align="center">CAS Number</TableCell>
             <TableCell align="right">Chemical Universe Status</TableCell>
           </TableRow>
         </TableHead>
