@@ -45,22 +45,22 @@ function createData(name, calories, fat, carbs, protein, price) {
       <React.Fragment>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
           <TableCell>
-            <IconButton
+            {/* <IconButton
               aria-label="expand row"
               size="small"
               onClick={() => setOpen(!open)}
             >
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>
+            </IconButton> */}
           </TableCell>
           <TableCell component="th" scope="row">
-            {row.name}
+            {row.substance_name}
           </TableCell>
-          <TableCell align="center">{row.calories}</TableCell>
-          <TableCell align="center">{row.fat}</TableCell>
-          <TableCell align="right">{row.carbs}</TableCell>
+          <TableCell align="center">{row.ec_number}</TableCell>
+          <TableCell align="center">{row.cas_number}</TableCell>
+          <TableCell align="right">Data Generation</TableCell>
         </TableRow>
-        <TableRow>
+        {/* <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box sx={{ margin: 1 }}>
@@ -94,7 +94,7 @@ function createData(name, calories, fat, carbs, protein, price) {
               </Box>
             </Collapse>
           </TableCell>
-        </TableRow>
+        </TableRow> */}
       </React.Fragment>
     );
   }
@@ -128,7 +128,6 @@ const rows = [
 
 function ChemicalTable(){
   const [data, setData] = React.useState([]);
-
   React.useEffect(
     () => {
       const fetchData = async () => {
@@ -142,6 +141,7 @@ function ChemicalTable(){
       }
       fetchData();
     }, [setData]);
+    console.log(data);
 
 
     return(
@@ -157,8 +157,18 @@ function ChemicalTable(){
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((d) => (
-            <Row key={d.name} row={d} />
+        {/* <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+          <TableCell>
+          </TableCell>
+          <TableCell component="th" scope="row">
+            {data[0].substance_name}
+          </TableCell>
+          <TableCell align="center"></TableCell>
+          <TableCell align="center"></TableCell>
+          <TableCell align="right"></TableCell>
+        </TableRow> */}
+          {data.map((row) => (
+            <Row key={row.substance_name} row={row} />
           ))}
         </TableBody>
       </Table>
