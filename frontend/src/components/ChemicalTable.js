@@ -127,6 +127,23 @@ const rows = [
   ];
 
 function ChemicalTable(){
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(
+    () => {
+      const fetchData = async () => {
+        const result = await fetch(
+          'http://localhost:3001/chemical'
+        );
+
+        const json = await result.json();
+
+        setData(json);
+      }
+      fetchData();
+    }, [setData]);
+
+
     return(
         <TableContainer>
       <Table aria-label="collapsible table">
@@ -140,8 +157,8 @@ function ChemicalTable(){
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {data.map((d) => (
+            <Row key={d.name} row={d} />
           ))}
         </TableBody>
       </Table>

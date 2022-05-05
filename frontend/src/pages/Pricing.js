@@ -52,6 +52,7 @@ const footers = [
 ];
 
 function PricingContent() {
+  
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />

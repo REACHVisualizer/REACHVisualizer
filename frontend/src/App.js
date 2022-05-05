@@ -12,18 +12,30 @@ const theme = createTheme({
 });
 
 function App() {
-  const [data, setData] = useState({ hits: [] });
+  const [data, setData] = React.useState([]);
 
-  React.useEffect(async () => {
-    const result = await axios(
-      'https://hn.algolia.com/api/v1/search?query=redux',
-    );
+  React.useEffect(
+    () => {
+      const fetchData = async () => {
+        const result = await fetch(
+          'http://localhost:3001/chemical'
+        );
 
-    setData(result.data);
-  });
+        const json = await result.json();
+
+        setData(json);
+      }
+      fetchData();
+    }, [setData]);
+
+  // bress a button to fetch https://stackoverflow.com/questions/55647287/how-to-send-request-on-click-react-hooks-way
 
   return <ThemeProvider theme={theme}>
-    <div></div>
+    <div>
+      {
+        data.length === 0 ? <div>loading...</div> : data.map(d => <div>my chemical is {d.substance_name}</div>)
+      }
+    </div>
     <Pricing />
   </ThemeProvider>;
 }

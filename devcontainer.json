@@ -1,3 +1,3 @@
 {
-    // "onCreateCommand": "docker run -p 27017:27017 -v tmp/db:/data/dbmongo"
+    // "onCreateCommand": "docker run -p 27017:27017 -v /tmp/db:/data/db mongo"
 }
