@@ -31,11 +31,11 @@ function App() {
   // bress a button to fetch https://stackoverflow.com/questions/55647287/how-to-send-request-on-click-react-hooks-way
 
   return <ThemeProvider theme={theme}>
-    <div>
+    {/* <div>
       {
         data.length === 0 ? <div>loading...</div> : data.map(d => <div>my chemical is {d.substance_name}</div>)
       }
-    </div>
+    </div> */}
     <Pricing />
   </ThemeProvider>;
 }
