@@ -7,7 +7,10 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#F39200'
-    }
+    },
+    red: {
+      main: '#E61E42'
+    },
   }
 });
 

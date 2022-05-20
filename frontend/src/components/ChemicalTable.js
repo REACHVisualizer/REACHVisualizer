@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
@@ -35,7 +36,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
           </TableCell>
           <TableCell align="center">{row.ec_number}</TableCell>
           <TableCell align="center">{row.cas_number}</TableCell>
-          <TableCell align="right">Data Generation</TableCell>
+          <TableCell align="right"><Chip label="Data Generation" color="success" variant="outlined" /></TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

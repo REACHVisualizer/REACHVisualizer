@@ -9,7 +9,8 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-import ChemicalTable from '../components/ChemicalTable';
+import MUIChemicalTable from '../components/MUIChemicalTable';
+// import ChemicalTable from '../components/ChemicalTable';
 
 
 
@@ -120,7 +121,8 @@ function PricingContent() {
       </Container>
       {/* End hero unit */}
       <Container maxWidth="lg" component="main">
-        <ChemicalTable />
+        {/* <ChemicalTable /> */}
+        <MUIChemicalTable />
       </Container>
       {/* Footer */}
       <Container
