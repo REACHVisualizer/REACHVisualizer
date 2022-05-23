@@ -17,31 +17,36 @@ const muiCache = createCache({
   function Example() {
     const columns = [
       {
-        name: 'Id',
+        name: 'id',
+        label: 'ID',
         options: {
           filter: false,
           display: false,
         },
       },
       {
-        name: 'Substance Name',
+        name: 'substance_name',
+        label: 'Substance Name',
         options: {
           filter: true,
         },
       },
       {
-        name: 'EC Number',
+        name: 'ec_number',
+        label: 'EC Number',
         options: {
           filter: true,
         },
       },
       {
-        name: 'CAS Number',
+        name: 'cas_number',
+        label: 'CAS Number',
         options: {
           filter: true,
         },
       },
     ];
+    
 
     const [data, setData] = React.useState([]);
   React.useEffect(
@@ -55,12 +60,7 @@ const muiCache = createCache({
       }
       fetchData();
     }, [setData]);
-
-    //data needs to be array of arrays, convert array of objects to array of arrays
-    var data2 = data.map( Object.values );
-    console.log(data2);
-
-    //const dataToAccordian = () => {data2};
+    console.log(data);
 
     const options = {
       filter: true,
@@ -74,7 +74,7 @@ const muiCache = createCache({
         return (
           <TableRow>
             {/* <TableCell colSpan={colSpan}>Custom expandable row option. Data: {JSON.stringify(rowData)}</TableCell> */}
-            <TableCell colSpan={colSpan}><Accordian dataToAccordian={rowData}/></TableCell>
+            <TableCell colSpan={colSpan}><Accordian dataToAccordian={data.find(x => x.id === rowData[0])}/></TableCell>
           </TableRow>
           
         );
@@ -105,7 +105,7 @@ const muiCache = createCache({
         <ThemeProvider theme={theme}>
           <MUIDataTable
             title={'Chemical Universe'}
-            data={data2}
+            data={data}
             columns={columns}
             options={options}
             components={components}
