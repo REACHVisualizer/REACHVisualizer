@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ChemicalModule } from './chemical/chemical.module';
 import { MongooseModule } from '@nestjs/mongoose'; 
 
-//require('dotenv').config();
 var connectionString = process.env.MONGODB_CONNECTION_CHEMICAL
 
 @Module({

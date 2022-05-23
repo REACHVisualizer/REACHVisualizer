@@ -6,6 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
+import Accordian from '../components/Accordian';
 
 const muiCache = createCache({
   key: 'mui-datatables',
@@ -19,6 +20,7 @@ const muiCache = createCache({
         name: 'Id',
         options: {
           filter: false,
+          display: false,
         },
       },
       {
@@ -58,6 +60,8 @@ const muiCache = createCache({
     var data2 = data.map( Object.values );
     console.log(data2);
 
+    //const dataToAccordian = () => {data2};
+
     const options = {
       filter: true,
       filterType: 'dropdown',
@@ -69,8 +73,10 @@ const muiCache = createCache({
         const colSpan = rowData.length + 1;
         return (
           <TableRow>
-            <TableCell colSpan={colSpan}>Custom expandable row option. Data: {JSON.stringify(rowData)}</TableCell>
+            {/* <TableCell colSpan={colSpan}>Custom expandable row option. Data: {JSON.stringify(rowData)}</TableCell> */}
+            <TableCell colSpan={colSpan}><Accordian dataToAccordian={rowData}/></TableCell>
           </TableRow>
+          
         );
       },
       onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) =>
