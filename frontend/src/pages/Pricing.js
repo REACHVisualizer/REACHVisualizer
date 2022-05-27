@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -10,7 +10,8 @@ import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import MUIChemicalTable from '../components/MUIChemicalTable';
-// import ChemicalTable from '../components/ChemicalTable';
+import NavTabs from '../components/NavTabs';
+//import Chip from '@mui/material/Chip';
 
 
 
@@ -64,59 +65,33 @@ function PricingContent() {
         elevation={0}
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+          <Typography variant="button" noWrap sx={{ flexGrow: 1 }}>
               <div style={{
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
 }}>
-          <ArrowForwardIcon fontSize="small" color="primary"/> REACH Visualizer
+          <ArrowForwardIcon fontSize="small" color="primary"/>&nbsp;REACH Visualizer
           </div>
           </Typography>
           <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Home
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              About
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Contact
-            </Link>
-          </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
+            <NavTabs/>
+          </nav>         
         </Toolbar>
       </AppBar>
       {/* Hero unit */} 
-      <Container maxWidth="md" component="main" sx={{ pt: 8, pb: 6 }}>
+      <Container maxWidth="lg" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography
           component="h3"
-          variant="h3"
+          variant="h4"
           align="left"
           color="text.primary"
           gutterBottom
         >
           Discover Chemical Regulations
         </Typography>
-        <Typography variant="h5" align="left" color="text.secondary" component="p">
-          Quickly discover REACH
+        <Typography variant="button" align="left" color="text.secondary" component="p">
+          Search Name, CAS or EC Number
         </Typography>
       </Container>
       {/* End hero unit */}
