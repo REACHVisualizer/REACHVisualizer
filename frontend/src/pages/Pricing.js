@@ -11,7 +11,10 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import MUIChemicalTable from '../components/MUIChemicalTable';
 import NavTabs from '../components/NavTabs';
+//import CustomizedTabs from '../components/CustomizedTabs';
 //import Chip from '@mui/material/Chip';
+import Paper from '@mui/material/Paper';
+import ColorToggleButton from '../components/FlagToggle';
 
 
 
@@ -54,7 +57,7 @@ const footers = [
 ];
 
 function PricingContent() {
-  
+
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
@@ -65,35 +68,42 @@ function PricingContent() {
         elevation={0}
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="button" noWrap sx={{ flexGrow: 1 }}>
-              <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-}}>
-          <ArrowForwardIcon fontSize="small" color="primary"/>&nbsp;REACH Visualizer
-          </div>
+          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+            }}>
+              <ArrowForwardIcon fontSize="small" color="primary" />&nbsp;REACH Visualizer
+            </div>
           </Typography>
           <nav>
-            <NavTabs/>
-          </nav>         
+            <NavTabs />
+            {/* <CustomizedTabs/> */}
+          </nav>
         </Toolbar>
       </AppBar>
-      {/* Hero unit */} 
+      {/* Hero unit */}
+
       <Container maxWidth="lg" component="main" sx={{ pt: 8, pb: 6 }}>
-        <Typography
-          component="h3"
-          variant="h4"
-          align="left"
-          color="text.primary"
-          gutterBottom
-        >
-          Discover Chemical Regulations
-        </Typography>
-        <Typography variant="button" align="left" color="text.secondary" component="p">
-          Search Name, CAS or EC Number
-        </Typography>
+        <Paper elevation={3} sx={{ p:3 }}>
+          <Typography
+            component="h3"
+            variant="h4"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            Discover Chemical Regulations
+          </Typography>
+          <Typography variant="button" align="left" color="text.secondary" component="p">
+            Search Name, CAS or EC Number
+          </Typography>
+          <ColorToggleButton/>
+        </Paper>
       </Container>
+
+
       {/* End hero unit */}
       <Container maxWidth="lg" component="main">
         {/* <ChemicalTable /> */}

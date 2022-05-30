@@ -11,6 +11,9 @@ const theme = createTheme({
     red: {
       main: '#E61E42'
     },
+    blue: {
+      main: '#1976d2'
+    },
   }
 });
 
